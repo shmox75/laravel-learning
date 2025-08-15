@@ -6,5 +6,5 @@ use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/signup', [SignupController::class, 'create']);
-Route::get('/login', [LoginController::class, 'create']);
+Route::get('/signup', [SignupController::class, 'create'])->name('signup');
+Route::get('/login', [LoginController::class, 'create'])->name('login');
