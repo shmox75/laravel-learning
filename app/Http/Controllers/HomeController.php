@@ -23,7 +23,9 @@ class HomeController extends Controller
         //$cars = Car::whereBelongsTo($carType)->get();
         //dd($cars);
         //$images = CarImage::whereBelongsTo($car)->get();
-        dd($car->images()->get());
+        //dd($car->images()->get());
+        $image = $car->images()->first();
+        dd($image->car);
 
         return view('home.index');
     }
