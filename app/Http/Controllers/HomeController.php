@@ -14,7 +14,8 @@ class HomeController extends Controller
 
         //dump($cars);
 
-        $car = new Car();
+        $car = Car::find(1);
+        dd($car->features);
         
 
         return view('home.index');
