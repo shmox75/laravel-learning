@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CarImage extends Model
 {
@@ -11,4 +13,8 @@ class CarImage extends Model
         'image_path',
         'position'
     ];
+
+    function car(): BelongsTo {
+        return $this->belongsTo(Car::class);
+    }
 }

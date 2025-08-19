@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\CarImage;
 use App\Models\CarFeatures;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Car extends Model
 {
@@ -40,5 +41,10 @@ class Car extends Model
 
     function primaryImage(): HasOne {
         return $this->hasOne(CarImage::class)->latestOfMany('position');
+    }
+
+    public function images(): hasMany
+    {
+        return $this->hasMany(CarImage::class);
     }
 }

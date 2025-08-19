@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\CarImage;
 use App\Models\CarType;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,13 @@ class HomeController extends Controller
 
         //dump($cars);
 
-        $car = Car::find(1);
+        $car = Car::find(2)->get();
         //echo($car->carType);
 
-        $carType = CarType::find(2);
-        dd($carType->cars);
-        
+        //$carType = CarType::find(2);
+        //$cars = Car::whereBelongsTo($carType)->get();
+        //dd($cars);
+        dd(CarImage::whereBelongsTo($car)->get());
 
         return view('home.index');
     }
