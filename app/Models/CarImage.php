@@ -13,8 +13,9 @@ class CarImage extends Model
         'image_path',
         'position'
     ];
+    protected $primaryKey = 'id';
 
-    function car(): BelongsTo {
+    function car() {
         return $this->belongsTo(Car::class);
     }
 }
