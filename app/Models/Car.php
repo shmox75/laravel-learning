@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\CarImage;
 use App\Models\CarFeatures;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Car extends Model
 {
@@ -28,6 +29,10 @@ class Car extends Model
         'description',
         'published_at'
     ];
+
+    function carType(): BelongsTo {
+        return $this->BelongsTo(CarType::class);
+    }
 
     function features(): HasOne {
         return $this->hasOne(CarFeatures::class, 'car_id');
