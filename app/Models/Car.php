@@ -43,8 +43,8 @@ class Car extends Model
         return $this->hasOne(CarImage::class)->latestOfMany('position');
     }
 
-    public function images(): hasMany
+    public function images(): HasMany
     {
-        return $this->hasMany(CarImage::class);
+        return $this->hasMany(CarImage::class, 'car_id', 'id');
     }
 }

@@ -16,14 +16,14 @@ class HomeController extends Controller
 
         //dump($cars);
 
-        $car = Car::where('id', 2)->get();
-        //echo($car->carType);
+        $car = Car::where('id', '=', 2)->first();
+        //dd($car);
 
         //$carType = CarType::find(2);
         //$cars = Car::whereBelongsTo($carType)->get();
         //dd($cars);
-        $images = CarImage::whereBelongsTo($car)->get();
-        dd($car->images);
+        //$images = CarImage::whereBelongsTo($car)->get();
+        dd($car->images()->get());
 
         return view('home.index');
     }
