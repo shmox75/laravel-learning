@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\CarImage;
 use App\Models\CarFeatures;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Car extends Model
@@ -35,6 +36,26 @@ class Car extends Model
         return $this->BelongsTo(CarType::class);
     }
 
+    function fuelType(): BelongsTo {
+        return $this->belongsTo(FuelType::class);
+    }
+
+    function maker(): BelongsTo {
+        return $this->belongsTo(Maker::class);
+    }
+
+    function model(): BelongsTo {
+        return $this->belongsTo(Model::class);
+    }
+
+    function owner(): BelongsTo {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    function city(): BelongsTo {
+        return $this->belongsTo(City::class);
+    }
+
     function features(): HasOne {
         return $this->hasOne(CarFeatures::class, 'car_id');
     }
@@ -46,5 +67,9 @@ class Car extends Model
     public function images(): HasMany
     {
         return $this->hasMany(CarImage::class, 'car_id', 'id');
+    }
+
+    function favoredUsers(): BelongsToMany {
+        return $this->belongsToMany(User::class, 'favorite_cars', 'car_id', 'user_id')->withTimestamps();
     }
 }

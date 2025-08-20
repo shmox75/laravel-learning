@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\CarImage;
 use App\Models\CarType;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,7 +17,7 @@ class HomeController extends Controller
 
         //dump($cars);
 
-        $car = Car::where('id', '=', 2)->first();
+        //$car = Car::where('id', '=', 2)->first();
         //dd($car);
 
         //$carType = CarType::find(2);
@@ -24,8 +25,16 @@ class HomeController extends Controller
         //dd($cars);
         //$images = CarImage::whereBelongsTo($car)->get();
         //dd($car->images()->get());
-        $image = $car->images()->first();
-        dd($image->car);
+        //$image = $car->images()->first();
+        //dd($image->car);
+
+        //$car = Car::find(1);
+        //dd($car->favoredUsers);
+        $user = User::find(1);
+        //$user->favoriteCars()->attach([1, 2]);
+        //$user->favoriteCars()->detach([1]);
+        //$user->favoriteCars()->sync([2]);
+        //dd($user->favoriteCars);
 
         return view('home.index');
     }
