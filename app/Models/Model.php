@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as EloquantModel;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Model extends EloquantModel
 {
@@ -11,4 +13,8 @@ class Model extends EloquantModel
         'maker_id',
         'name'
     ];
+
+    function cars(): HasMany {
+        return $this->hasMany(Car::class);
+    }
 }
