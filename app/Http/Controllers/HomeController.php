@@ -6,7 +6,9 @@ use App\Models\Car;
 use App\Models\CarImage;
 use App\Models\CarType;
 use App\Models\Maker;
+use App\Models\Model;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -36,8 +38,36 @@ class HomeController extends Controller
         //$user->favoriteCars()->detach([1]);
         //$user->favoriteCars()->sync([2]);
         //dd($user->favoriteCars);
-        $maker = Maker::factory();
-        dd($maker);
+        //$makers = Maker::factory()->count(10)->create();
+        //dd($makers);
+        /*User::factory()
+            ->count(10)
+            ->sequence(fn (Sequence $sequence) => ['name' => 'Name ' . $sequence->index])
+            ->create([
+            
+        ]);*/
+
+        /*User::factory()
+            ->count(5)
+            ->sequence([
+                'email_verified_at' => null
+            ])
+            ->create();*/
+
+        /*Maker::factory()
+            ->count(5)
+            ->hasModels(5)
+            ->create();*/
+        
+        Model::factory()
+            ->count(1)
+            /*->forMaker([
+                'name' => 'Lexus'
+            ])*/
+            ->for(Maker::factory()->state(['name' => 'Lexus']))
+            ->create();
+
+
 
         return view('home.index');
     }

@@ -2,15 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Maker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Maker>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class MakerFactory extends Factory
+class CarImageFactory extends Factory
 {
-    protected $model = Maker::class;
     /**
      * Define the model's default state.
      *
@@ -19,7 +17,7 @@ class MakerFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->word()
+            //
         ];
     }
 }
