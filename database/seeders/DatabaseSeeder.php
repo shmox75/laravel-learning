@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Car;
+use App\Models\CarFeatures;
+use App\Models\CarImage;
 use App\Models\CarType;
 use App\Models\City;
 use App\Models\FuelType;
@@ -100,5 +103,27 @@ class DatabaseSeeder extends Seeder
              )
              ->create();
         }
+
+        User::factory()
+            ->count(3)
+            ->create();
+
+        User::factory()
+            ->count(2)
+            ->has(
+                Car::factory()
+                ->count(5)
+                ->has(
+                    CarImage::factory()
+                    ->count(3)
+                    ->sequence(fn($sequence) => ['position' => $sequence->index + 1]),
+                    'images'
+                )
+                ->has(
+                    CarFeatures::factory(),
+                    'features'
+                )
+            )
+            ->create();
     }
 }
