@@ -42,7 +42,7 @@ class CarFactory extends Factory
             'city_id' => City::inRandomOrder()->first()->id,
             'address' => fake()->address(),
             'phone' => function ( array $attributes ) {
-                return User::where('id', $attributes['user_id'])
+                return User::where('id', $attributes['user_id'])->first()
                     ->phone;
             },
             'description' => fake()->text(2000),
