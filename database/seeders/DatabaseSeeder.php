@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\CarType;
 use App\Models\City;
 use App\Models\FuelType;
+use App\Models\Maker;
+use App\Models\Model;
 use App\Models\State;
 use App\Models\User;
 use Database\Factories\StateFactory;
@@ -73,6 +75,30 @@ class DatabaseSeeder extends Seeder
                 ->sequence(...array_map(fn($city) => ['name' => $city], $cities))                
             )
             ->create();
+        }
+
+        $carMakers = [
+            "Toyota" => ["Corolla", "Camry", "RAV4", "Hilux"],
+            "Honda" => ["Civic", "Accord", "CR-V", "Jazz"],
+            "Ford" => ["Fiesta", "Focus", "Mustang", "Explorer"],
+            "Chevrolet" => ["Spark", "Malibu", "Camaro", "Tahoe"],
+            "BMW" => ["3 Series", "5 Series", "X3", "X5"],
+            "Mercedes-Benz" => ["C-Class", "E-Class", "GLC", "S-Class"],
+            "Audi" => ["A3", "A4", "Q5", "Q7"],
+            "Volkswagen" => ["Golf", "Passat", "Tiguan", "Jetta"],
+            "Nissan" => ["Altima", "Sentra", "Qashqai", "X-Trail"],
+            "Hyundai" => ["Elantra", "Sonata", "Tucson", "Santa Fe"]
+        ];
+
+        foreach($carMakers as $maker => $models) {
+            Maker::factory()
+             ->state(['name' => $maker])
+             ->has(
+                Model::factory()
+                ->count(count($models))
+                ->sequence(...array_map(fn($model) => ['name' => $model], $models))
+             )
+             ->create();
         }
     }
 }
