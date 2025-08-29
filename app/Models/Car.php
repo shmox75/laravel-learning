@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\CarImage;
 use App\Models\CarFeatures;
+use App\Models\Model as CarModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -45,7 +46,7 @@ class Car extends Model
     }
 
     function model(): BelongsTo {
-        return $this->belongsTo(Model::class);
+        return $this->belongsTo(CarModel::class);
     }
 
     function owner(): BelongsTo {
