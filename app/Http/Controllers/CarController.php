@@ -63,8 +63,9 @@ class CarController extends Controller
         //
     }
 
-    public function search()
+    public function search(Request $request)
     {
+        //dd($request->get('maker_id'));
         $query = Car::where('published_at', '<', now())
                     ->orderBy('published_at', 'desc');
 
