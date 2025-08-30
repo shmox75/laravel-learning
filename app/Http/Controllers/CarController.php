@@ -65,9 +65,15 @@ class CarController extends Controller
 
     public function search(Request $request)
     {
-        //dd($request->get('maker_id'));
-        $query = Car::where('published_at', '<', now())
+        //dd($request->input('maker_id'));
+        $maker_id = $request->input('maker_id');
+        
+        $query = Car::where('published_at', '<', now())                    
                     ->orderBy('published_at', 'desc');
+
+        if($maker_id) {
+            $query->where('maker_id', '=', $maker_id);
+        }
 
         $carCount = $query->count();
         $cars = $query->limit(30)->get();
