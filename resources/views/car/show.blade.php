@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :title="$car->maker->name . ' ' . $car->model->name . ' - ' . $car->year">
     <main>
         <div class="container">
             <h1 class="car-details-page-title">{{ $car->maker->name }} {{ $car->model->name }} - {{ $car->year }}</h1>
@@ -62,6 +62,18 @@
                             </x-car-specification>
                             <x-car-specification :value="$car->features->gps_navigation">
                                 GPS Navigation
+                            </x-car-specification>
+                            <x-car-specification :value="$car->features->heater_seats">
+                                Heater Seats
+                            </x-car-specification>
+                            <x-car-specification :value="$car->features->climate_control">
+                                Climate Control
+                            </x-car-specification>
+                            <x-car-specification :value="$car->features->rear_parking_sensors">
+                                Rear Parking Sensors
+                            </x-car-specification>
+                            <x-car-specification :value="$car->features->leather_seats">
+                                Leather Seats
                             </x-car-specification>
                         </ul>
                     </div>
